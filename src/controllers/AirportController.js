@@ -1,26 +1,29 @@
-import AirportDBSchema from '../database/airportschema';
-// import Sequelize from 'sequelize';
-// import SqlStore from '../modules/databaseFilter';
+//import AirportDBSchema from '../database/airportschema';
+import UserDBSchema from '../database/schema';
+import Sequelize from 'sequelize';
+import SqlStore from '../modules/databaseFilter';
 const crypto = require('crypto');
 
 export default class AirportController {
   constructor() {
-    this.AirportDB = new AirportDBSchema();
-    // this.sqlStore = new SqlStore({}, this.UserDB.objectdb(), {
-    //   userId: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
-    //   display_name: Sequelize.STRING,
-    //   username: Sequelize.STRING,
-    //   email_address: Sequelize.STRING,
-    //   firstname: Sequelize.STRING,
-    //   lastname: Sequelize.STRING,
-    //   created_by: Sequelize.STRING,
-    //   updated_by: Sequelize.STRING,
-    //   change_pw: Sequelize.INTEGER,
-    //   account_locked: Sequelize.INTEGER,
-    //   user_disabled: Sequelize.INTEGER,
+    this.AirportDB = new UserDBSchema();
+    // this.sqlStore = new SqlStore({}, this.AirportDB.objectdb(), {
+    //    AirportId: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
+    //   AirportIataCode: Sequelize.STRING,
+    //   AirportIcaoCode: Sequelize.STRING,
+    //   AirportName: Sequelize.STRING,
+    //   AirportCity: Sequelize.STRING,
+    //   RowStatusTypeId: Sequelize.INTEGER,
+    //   CustomProperty: Sequelize.STRING,
+    //   EditUserId: Sequelize.INTEGER,
+    //   EditVersion: Sequelize.STRING,
+    //   EditTime: Sequelize.STRING,
+    //   EditHostName: Sequelize.STRING,
+    //   EditHostAddress: Sequelize.STRING
     // });
   }
   async create(obj) {
+    console.log('in controllers create');
     return await this.AirportDB.Airport.create(obj);
   }
   async update(id, obj) {
@@ -32,7 +35,8 @@ export default class AirportController {
   async findById(id) {
     return await this.AirportDB.Airport.findOne({ userId: id });
   }
-  async findAll(query, req, res) {
+  async findAll() {
     // return await this.sqlStore.search(req);
+    return await this.AirportDB.Airport.findAll();
   }
 }

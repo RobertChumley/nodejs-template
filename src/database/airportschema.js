@@ -10,7 +10,8 @@ class AirportDBSchema {
     return this.sequelize;
   }
   setup() {
-    this.Airport = this.sequelize.define('airports', {
+    this.Airport = this.sequelize.define('airport', {
+      AirportId: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
       AirportIataCode: Sequelize.STRING,
       AirportIcaoCode: Sequelize.STRING,
       AirportName: Sequelize.STRING,
@@ -23,24 +24,25 @@ class AirportDBSchema {
       EditHostName: Sequelize.STRING,
       EditHostAddress: Sequelize.STRING,
     });
-    this.Countries = this.sequelize.define('countries', {
-      CountryCode: Sequelize.STRING,
-      Name: Sequelize.STRING,
-      SiteGroupId: Sequelize.INTEGER,
-      LanguageCode: Sequelize.STRING, // refers to language table to be defined
-      RowStatusTypeId: Sequelize.INTEGER,
-      CustomProperty: Sequelize.STRING,
-      EditUserId: Sequelize.INTEGER,
-      EditVersion: Sequelize.STRING,
-      EditTime: Sequelize.STRING,
-      EditHostName: Sequelize.STRING,
-      EditHostAddress: Sequelize.STRING,
-    });
+    // this.Countries = this.sequelize.define('countries', {
+    //   CountryCode: Sequelize.STRING,
+    //   Name: Sequelize.STRING,
+    //   SiteGroupId: Sequelize.INTEGER,
+    //   LanguageCode: Sequelize.STRING, // refers to language table to be defined
+    //   RowStatusTypeId: Sequelize.INTEGER,
+    //   CustomProperty: Sequelize.STRING,
+    //   EditUserId: Sequelize.INTEGER,
+    //   EditVersion: Sequelize.STRING,
+    //   EditTime: Sequelize.STRING,
+    //   EditHostName: Sequelize.STRING,
+    //   EditHostAddress: Sequelize.STRING,
+    // });
 
     // this.airport.hasOne(this.countries);
   }
 
   async align() {
+    console.log('align fn');
     try {
       await this.sequelize.sync();
     } catch (e) {}

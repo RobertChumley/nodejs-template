@@ -3,17 +3,17 @@ import { Router } from 'express';
 
 const router = new Router();
 import AirportController from '../controllers/AirportController';
-import BaseApi from './baseapi';
 
+import BaseApi from './baseapi';
 class AirportApi extends BaseApi {
   constructor() {
     super();
     this.airportController = new AirportController();
-    // this.authenticate
   }
 
 
   async search(req, res) {
+
     const data = await this.airportController.findAll(req.body, req, res);
     res.json(data);
   }

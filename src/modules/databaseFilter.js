@@ -26,18 +26,32 @@ export default class SqlStore {
     this.relations = {};
     if (objectdb) {
       this.attributes = {
-        userId: Joi.number(),
-        display_name: Joi.string(),
-        username: Joi.string(),
-        email_address: Joi.string(),
-        firstname: Joi.string(),
-        lastname: Joi.string(),
-        created_by: Joi.string(),
-        updated_by: Joi.string(),
-        change_pw: Joi.string(),
-        account_locked: Joi.string(),
-        user_disabled: Joi.string(),
+          userId: Joi.number(),
+          display_name: Joi.string(),
+          username: Joi.string(),
+          email_address: Joi.string(),
+          firstname: Joi.string(),
+          lastname: Joi.string(),
+          created_by: Joi.string(),
+          updated_by: Joi.string(),
+          change_pw: Joi.string(),
+          account_locked: Joi.string(),
+          user_disabled: Joi.string(),
       };
+
+      // this.attributes = {
+      //   userId: Joi.number(),
+      //   display_name: Joi.string(),
+      //   username: Joi.string(),
+      //   email_address: Joi.string(),
+      //   firstname: Joi.string(),
+      //   lastname: Joi.string(),
+      //   created_by: Joi.string(),
+      //   updated_by: Joi.string(),
+      //   change_pw: Joi.string(),
+      //   account_locked: Joi.string(),
+      //   user_disabled: Joi.string(),
+      // };
 
       this.sequelize = objectdb;
 
