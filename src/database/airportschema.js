@@ -42,7 +42,6 @@ class AirportDBSchema {
   }
 
   async align() {
-    console.log('align fn');
     try {
       await this.sequelize.sync();
     } catch (e) {}

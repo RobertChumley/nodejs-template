@@ -39,20 +39,6 @@ class UserDBSchema {
       layout: Sequelize.TEXT(Sequelize.long),
       created_by: Sequelize.STRING,
     });
-    this.Airport = this.sequelize.define('airport', {
-      AirportId: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
-      AirportIataCode: Sequelize.STRING,
-      AirportIcaoCode: Sequelize.STRING,
-      AirportName: Sequelize.STRING,
-      AirportCity: Sequelize.STRING,
-      RowStatusTypeId: Sequelize.INTEGER,
-      CustomProperty: Sequelize.STRING,
-      EditUserId: Sequelize.INTEGER,
-      EditVersion: Sequelize.STRING,
-      EditTime: Sequelize.STRING,
-      EditHostName: Sequelize.STRING,
-      EditHostAddress: Sequelize.STRING,
-    });
     this.Group = this.sequelize.define('group', {
       groupId: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
       group_name: Sequelize.STRING,

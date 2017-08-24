@@ -11,13 +11,19 @@
 /* eslint-disable no-console, no-shadow */
 
 import app from './app';
-//import db from './db';
+// import db from './db';
 import redis from './redis';
 import UserDBSchema from './database/schema';
+import AirportDBSchema from './database/airportschema';
 
-let userDb = new UserDBSchema();
-userDb.align().then(()=>{
-  console.log("user database aligned");
+const userDb = new UserDBSchema();
+userDb.align().then(() => {
+  console.log('user database aligned');
+});
+
+const airportDb = new AirportDBSchema();
+airportDb.align().then(() => {
+  console.log('airport schema aligned');
 });
 
 const port = process.env.PORT || 8080;
